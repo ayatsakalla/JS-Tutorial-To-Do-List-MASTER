@@ -15,4 +15,9 @@ function addToDo(toDo) {
     list.insertAdjacentHTML(position, text);
 }
 
+document.addEventListener("keyup", function(event){
+    if (event.keyCode == 13) {
+        const toDo = input.ariaValueMax;
+    }
+})
 
