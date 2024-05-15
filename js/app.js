@@ -4,7 +4,7 @@ const dataElement = document.getElementById("date");
 const input = document.getElementById("input");
 
 
-function addToDo(toDo) {
+function addToDo(toDo, ) {
     const list = document.getElementById("list");
     const text = `<li class="item">
                 <i class="co fa fa-circle-thin" job="complete"></i>
@@ -17,7 +17,24 @@ function addToDo(toDo) {
 
 document.addEventListener("keyup", function(event){
     if (event.keyCode == 13) {
-        const toDo = input.ariaValueMax;
+        const toDo = input.value;
+        if (toDo) {
+            addToDo(toDo, id, false, false);
+            LIST.push (
+                {
+                    name: toDo,
+                    id:  id,
+                    done: false,
+                    trash: false
+                }
+            )
+
+
+
+
+            input.value = "";
+            id++;
+        }
     }
 })
 
