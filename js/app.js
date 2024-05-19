@@ -13,8 +13,7 @@ const LINE_THROUGH = "lineThrough";
 
 //variables
 
-let LIST = []
-    , id = 0;
+let LIST, id;
 
 // show todays date
 
@@ -42,7 +41,7 @@ function addToDo(toDo, id, done, trash) {
 }
 
 // add an item to the list user the enter key 
-document.addEventListener("keyup",function(even){
+document.addEventListener("keyup",function(event){
     if (event.keyCode == 13) {
         const toDo = input.value;
 
@@ -65,7 +64,7 @@ document.addEventListener("keyup",function(even){
 });
 
 // complete to do 
-function completeToDO(element) {
+function completeToDo(element) {
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
     element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
@@ -80,4 +79,17 @@ function removeToDo(element){
     LIST[element.id].trash = true;
 }
 
+//target the items created dynamically
+
+list.addEventListener("click", function(event) {
+    const element = event.target; // return the clicked element inside list
+
+    const elementJob = element.attributes.job.value; //complete or delete
+
+    if(elementJob == "complete") {
+        completeToDo(element);
+    } else if(elementJob == "delete") {
+        removeToDo(element); 
+    }
+});
 
