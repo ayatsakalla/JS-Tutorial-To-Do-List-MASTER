@@ -36,6 +36,12 @@ function loadList(array) {
     });
 }
 
+//clear the local storage
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload();
+}); 
+
 // show todays date
 
 const options = {weekday : "long", month:"short", day:"numeric"};
@@ -107,7 +113,6 @@ function removeToDo(element){
 
 list.addEventListener("click", function(event) {
     const element = event.target; // return the clicked element inside list
-
     const elementJob = element.attributes.job.value; //complete or delete
 
     if(elementJob == "complete") {
