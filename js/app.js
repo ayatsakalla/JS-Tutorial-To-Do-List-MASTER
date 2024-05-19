@@ -59,7 +59,7 @@ function addToDo(toDo, id, done, trash) {
     const LINE = done ? LINE_THROUGH : "";
     
     const item = `<li class="item">
-                <i class="co fa ${DONE}" job="complete id="${id}"></i>
+                <i class="co fa ${DONE}" job="complete" id="${id}"></i>
                 <p class="text ${LINE}">${toDo}</p>
                 <i class="de fa fa-trash-o" job="delete" id="${id}"></i>
             </li>`
@@ -110,7 +110,6 @@ function removeToDo(element){
 }
 
 //target the items created dynamically
-
 list.addEventListener("click", function(event) {
     const element = event.target; // return the clicked element inside list
     const elementJob = element.attributes.job.value; //complete or delete
