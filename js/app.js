@@ -15,6 +15,27 @@ const LINE_THROUGH = "lineThrough";
 
 let LIST, id;
 
+// get item from localstorage
+let data = localStorage.getItem("TODO");
+
+// check if data is not empty 
+if (data) {
+    LIST = JSON.parse(data);
+    id = LIST.length; // set the id to the last one in the list
+    loadList(LIST); // load the list to the user inferface
+} else {
+    // if data isn't empty
+    LIST = [];
+    id = 0; 
+}
+
+//load items to the user's interface 
+function loadList(array) {
+    array.forEach(function(item) {
+        addToDo(item.name, item.id, item.done, item.trash);
+    });
+}
+
 // show todays date
 
 const options = {weekday : "long", month:"short", day:"numeric"};
@@ -56,6 +77,9 @@ document.addEventListener("keyup",function(event){
                 trash : false 
             });
 
+            //add item to localstorage (this code must be added where LIST array is used)
+            localStorage.setItem("TODO", JSON.stringify(LIST)); 
+
             id++; 
 
             input.value = "";
@@ -91,5 +115,8 @@ list.addEventListener("click", function(event) {
     } else if(elementJob == "delete") {
         removeToDo(element); 
     }
+
+    //add item to localstorage (this code must be added where LIST array is used)
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
